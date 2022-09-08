@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="wpo-about-area section-padding">
+
+{% for evenement in evenements %}
+
+        <div class="container" style="background-color: #f6f6f1;margin-top: 10px">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 colsm-12">
+                    <div class="wpo-about-text">
+                        <div class="wpo-section-title">
+                            <span>{{ evenement.date|date }}</span>
+                            <h2>{{ evenement.titre }}</h2>
+                        </div>
+                       <h4>{{ evenement.description }}<br/>
+                       </h4>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 colsm-12">
+                        <img  src="{{ vich_uploader_asset(evenement, 'imageFile') }}" alt="Image">
+                </div>
+            </div>
+        </div>
+
+{% endfor %}
+    </div>
+{% endblock %}

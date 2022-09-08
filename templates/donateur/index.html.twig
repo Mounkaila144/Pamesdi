@@ -1,0 +1,48 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Donateur index{% endblock %}
+
+{% block body %}
+<div class="card">
+    <div class="card-header  border-0">
+        <div class="d-flex align-items-center">
+            <h5 class="card-title mb-0 flex-grow-1">Listes des Donnateurs</h5>
+        </div>
+    </div>
+    <div class="card-body">
+        <table id="scroll-horizontal" class="table nowrap align-middle card-li table-datatable" style="width:100%">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>Montant</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for donateur in donateurs %}
+            <tr>
+                <td>{{ donateur.id }}</td>
+                <td>{{ donateur.nom }}</td>
+                <td>{{ donateur.prenom }}</td>
+                <td>{{ donateur.telephone }}</td>
+                <td>{{ donateur.montant }}</td>
+                <td>
+                    <a href="{{ path('app_donateur_show', {'id': donateur.id}) }}">show</a>
+                    <a href="{{ path('app_donateur_edit', {'id': donateur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+
+    <a href="{{ path('app_donateur_new') }}">Create new</a>
+{% endblock %}
