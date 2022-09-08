@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/donateur')]
+#[Route('admin/donateur')]
 class DonateurController extends AbstractController
 {
     #[Route('/', name: 'app_donateur_index', methods: ['GET'])]
@@ -21,11 +21,6 @@ class DonateurController extends AbstractController
         ]);
     }
 
-    #[Route('/don', name: 'app_donateur_don', methods: ['GET'])]
-    public function don(): Response
-    {
-        return $this->render('donateur/don.html.twig');
-    }
 
     #[Route('/new', name: 'app_donateur_new', methods: ['GET', 'POST'])]
     public function new(Request $request, DonateurRepository $donateurRepository): Response

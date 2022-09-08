@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/evenement')]
+#[Route('admin/evenement')]
 class EvenementController extends AbstractController
 {
     #[Route('/', name: 'app_evenement_index', methods: ['GET'])]
@@ -21,13 +21,6 @@ class EvenementController extends AbstractController
         ]);
     }
 
-    #[Route('/list', name: 'app_evenement_list', methods: ['GET'])]
-    public function Evenement(EvenementRepository $evenementRepository): Response
-    {
-        return $this->render('home/evenement.html.twig', [
-            'evenements' => $evenementRepository->findAll(),
-        ]);
-    }
 
     #[Route('/new', name: 'app_evenement_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EvenementRepository $evenementRepository): Response
